@@ -1,7 +1,7 @@
 const app = require("./app");
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
-const port = process.env.PORT||4000;
+const port = process.env.PORT;
 const users  = {};
 const rooms = {};
 
