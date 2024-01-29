@@ -1,6 +1,8 @@
 const app = require("./app");
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
+const dotenv = require("dotenv");
+dotenv.config({path:"./config.env"})
 const port = process.env.PORT;
 const users  = {};
 const rooms = {};
