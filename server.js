@@ -1,19 +1,23 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-
 app.use(express.json());
-app.use(
-  cors({
+app.use(cors());
+
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server, {
+  cors: {
     origin: "*",
     methods: ["GET", "POST"],
-    maxHttpBufferSize: 1e8
-  })
-);
-const server = require("http").Server(app);
-const io = require("socket.io")(server);
+  },
+  maxHttpBufferSize: 1e8,
+});
+
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
+
 const port = process.env.PORT;
 const users = {};
 const rooms = {};
