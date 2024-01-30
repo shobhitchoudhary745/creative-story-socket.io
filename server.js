@@ -6,8 +6,8 @@ app.use(express.json());
 app.use(
   cors({
     origin: "*",
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-    credentials: true,
+    methods: ["GET", "POST"],
+    maxHttpBufferSize: 1e8
   })
 );
 const server = require("http").Server(app);
